@@ -39,3 +39,14 @@ export const getWeekDay = (weatherData) => {
     new Date((weatherData.dt + weatherData.timezone) * 1000).getUTCDay()
   ];
 };
+export const getVisibilityData = (unitSystem, timeData, visibilityData) => {
+  if (timeData.length !== visibilityData.length) return;
+  const lastIndex = visibilityData.length - 1;
+  const lastVisibility = visibilityData[lastIndex];
+
+  const convertedVisibility = getVisibility(unitSystem, lastVisibility);
+  
+  return {
+    convertedVisibility,
+  }
+}
