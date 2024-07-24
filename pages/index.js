@@ -10,6 +10,8 @@ import { UnitSwitch } from "../components/UnitSwitch";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ErrorScreen } from "../components/ErrorScreen";
 
+import  cityWeatherConfiguration  from "../public/cityWeatherConfiguration.json";
+
 import styles from "../styles/Home.module.css";
 
 export const App = () => {
@@ -37,13 +39,13 @@ export const App = () => {
       ? setUnitSystem("imperial")
       : setUnitSystem("metric");
 
-  return weatherData && !weatherData.message ? (
+  return weatherData ? (
     <div className={styles.wrapper}>
       <MainCard
-        city={weatherData.name}
-        country={weatherData.sys.country}
-        description={weatherData.weather[0].description}
-        iconName={weatherData.weather[0].icon}
+        city={cityWeatherConfiguration.city}
+        country={cityWeatherConfiguration.country}
+        description={weatherData.current.weather_code}
+        iconName={weatherData.current.weather_code}
         unitSystem={unitSystem}
         weatherData={weatherData}
       />
