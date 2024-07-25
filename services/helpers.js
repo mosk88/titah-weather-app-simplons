@@ -16,11 +16,11 @@ export const getVisibility = (unitSystem, visibilityInMeters) =>
 export const getTime = (unitSystem, currentTime, timezone) =>
   unitSystem == "metric"
     ? unixToLocalTime(currentTime, timezone)
-    : timeTo12HourFormat(unixToLocalTime(currentTime, timezone));
+    : timeTo12HourFormat(unixToLocalTime(currentTime));
 
-export const getAMPM = (unitSystem, currentTime, timezone) =>
+export const getAMPM = (unitSystem, currentTime) =>
   unitSystem === "imperial"
-    ? unixToLocalTime(currentTime, timezone).split(":")[0] >= 12
+    ? unixToLocalTime(currentTime).split(":")[0] >= 12
       ? "PM"
       : "AM"
     : "";
@@ -35,7 +35,7 @@ export const getWeekDay = (weatherData) => {
     "Friday",
     "Saturday",
   ];
-  return weekday[new Date(weatherData.daily.time*1000).getDay()];
+  return weekday[new Date(weatherData.daily.time * 1000).getDay()];
 };
 export const getVisibilityData = (unitSystem, timeData, visibilityData) => {
   if (timeData.length !== visibilityData.length) return;
@@ -48,7 +48,7 @@ export const getVisibilityData = (unitSystem, timeData, visibilityData) => {
     convertedVisibility,
   }
 };
-export const getIconCard = (iconName) => {
+export const getIconMap = (iconName) => {
   if (iconName === 0) return "/icons/01d.svg";
   if (iconName === 1 || iconName === 2 || iconName === 3)
     return "/icons/02d.svg";

@@ -9,6 +9,7 @@ export const timeTo12HourFormat = (time) => {
   return `${(hours %= 12) ? hours : 12}:${minutes}`;
 };
 
+
 export const degToCompass = (num) => {
   var val = Math.round(num / 22.5);
   var arr = [
