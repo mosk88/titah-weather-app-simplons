@@ -3,18 +3,24 @@ import {
   getTime,
   getAMPM,
   getWindSpeed,
-  getVisibilityData
+  getVisibilityData,
+  getHumidity
 } from "../services/helpers";
 import { MetricsCard } from "./MetricsCard";
 import styles from "./MetricsBox.module.css";
 
 export const MetricsBox = ({ weatherData, unitSystem }) => {
+   const visibilityData = getVisibilityData(
+     unitSystem,
+     weatherData.hourly.time,
+     weatherData.hourly.visibility
+   );
   return (
     <div className={styles.wrapper}>
       <MetricsCard
         title={"Humidity"}
         iconSrc={"/icons/humidity.png"}
-        metric={weatherData.current.humidity_2m}
+        metric={weatherData.current.relative_humidity_2m}
         unit={"%"}
       />
       <MetricsCard
@@ -26,12 +32,12 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
       <MetricsCard
         title={"Wind direction"}
         iconSrc={"/icons/compass.png"}
-        metric={degToCompass(weatherData.wind_direction_10m)}
+        metric={degToCompass(weatherData.current.wind_direction_10m)}
       />
       <MetricsCard
         title={"Visibility"}
         iconSrc={"/icons/binocular.png"}
-        metric={getVisibilityData.convertedVisibility}
+        metric={visibilityData.convertedVisibility}
         unit={unitSystem == "metric" ? "km" : "miles"}
       />
       <MetricsCard

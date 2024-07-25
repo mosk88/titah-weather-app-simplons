@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ctoF } from "../services/converters";
+import { codeToDescription, ctoF } from "../services/converters";
 import styles from "./MainCard.module.css";
-import { getIcon } from "../services/helpers";
+import {  getIconCard } from "../services/helpers";
 
 
 export const MainCard = ({
@@ -12,16 +12,17 @@ export const MainCard = ({
   unitSystem,
   weatherData,
 }) => {
+  console.log('iconNam', iconName)
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.location}>
         {city}, {country}
       </h1>
-      <p className={styles.description}>{description}</p>
+      <p className={styles.description}>{codeToDescription(description)}</p>
       <Image
         width="300px"
         height="300px"
-        src={`/icons/${iconName}.svg`}
+        src={getIconCard(iconName)}
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>

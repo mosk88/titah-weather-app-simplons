@@ -35,9 +35,7 @@ export const getWeekDay = (weatherData) => {
     "Friday",
     "Saturday",
   ];
-  return weekday[
-    new Date((weatherData.dt + weatherData.timezone) * 1000).getUTCDay()
-  ];
+  return weekday[new Date(weatherData.daily.time*1000).getDay()];
 };
 export const getVisibilityData = (unitSystem, timeData, visibilityData) => {
   if (timeData.length !== visibilityData.length) return;
@@ -49,4 +47,35 @@ export const getVisibilityData = (unitSystem, timeData, visibilityData) => {
   return {
     convertedVisibility,
   }
-}
+};
+export const getIconCard = (iconName) => {
+  if (iconName === 0) return "/icons/01d.svg";
+  if (iconName === 1 || iconName === 2 || iconName === 3)
+    return "/icons/02d.svg";
+  if (iconName === "45" || iconName === "48") return "/icons/50d.svg";
+  if (
+    iconName === 51 ||
+    iconName === 53 ||
+    iconName === 55 ||
+    iconName === 56 ||
+    iconName === 57
+  )
+    return "/icons/09d.svg";
+  if (iconName === 61 || iconName === 63 || iconName === 65)
+    return "/icons/10d.svg";
+  if (iconName === 66 || iconName === 67) return "/icons/13d.svg";
+  if (
+    iconName === 71 ||
+    iconName === 73 ||
+    iconName === 75 ||
+    iconName === 77 ||
+    iconName === 85 ||
+    iconName === 86
+  )
+    return "/icons/13d.svg";
+  if (iconName === 80 || iconName === 81 || iconName === 82)
+    return "/icons/09d.svg";
+  if (iconName === 95 || iconName === 96 || iconName === 99)
+    return "/icons/11d.svg";
+};
+
