@@ -13,7 +13,7 @@ This Weather App is designed to display weather information on screens in public
 
 ## Screenshot
 
-![Weather App Screenshot](public/icons/screenShot.png.png)
+![Weather App Screenshot](public/icons/screenShot.png)
 
 ## Installation
 
