@@ -35,7 +35,7 @@ export const App = () => {
    getData();
 
    const interval = setInterval(() => {
-     fetchData();
+     getData();
    }, 3600000);
 
    return () => clearInterval(interval);
