@@ -37,6 +37,7 @@ export const getWeekDay = (weatherData) => {
   ];
   return weekday[new Date(weatherData.daily.time * 1000).getDay()];
 };
+
 export const getVisibilityData = (unitSystem, timeData, visibilityData) => {
   if (timeData.length !== visibilityData.length) return;
   const lastIndex = visibilityData.length - 1;
@@ -48,6 +49,7 @@ export const getVisibilityData = (unitSystem, timeData, visibilityData) => {
     convertedVisibility,
   }
 };
+// GET ICON MAP FROM ICON NAME
 export const getIconMap = (iconName) => {
   if (iconName === 0) return "/icons/01d.svg";
   if (iconName === 1 || iconName === 2 || iconName === 3)

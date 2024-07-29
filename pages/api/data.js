@@ -1,4 +1,5 @@
 import cityWeatherConfiguration from "/public/cityWeatherConfiguration.json";
+//get data from api open-meteo with lat and long from cityWeatherConfiguration
 export default async function handler(req, res) {
   
   const getWeatherData = await fetch(
