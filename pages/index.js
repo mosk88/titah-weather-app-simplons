@@ -18,7 +18,7 @@ export const App = () => {
   const [triggerFetch, setTriggerFetch] = useState(true);
   const [weatherData, setWeatherData] = useState();
   const [unitSystem, setUnitSystem] = useState("metric");
-
+// refresh data every 1h
  useEffect(() => {
    const getData = async () => {
      try {
